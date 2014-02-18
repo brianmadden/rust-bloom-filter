@@ -57,23 +57,24 @@ specified index position is a 1, and false otherwise.
 
 ### Examples
 
-`extern mod bit_vec;
- use bit_vec::bit_vec::Bit_vec;
+	extern mod bit_vec;
+	use bit_vec::bit_vec::Bit_vec;
 
- fn main() {
+	fn main() {
 
-    let mut bv = Bit_vec::new(8);
-    bv.set(5);
-    test_for_5(&bv);
-    bv.unset(5);
-    test_for_5(&bv);
+       let mut bv = Bit_vec::new(8);
+       bv.set(5);
+       test_for_5(&bv);
+       bv.unset(5);
+       test_for_5(&bv);
     
- }
+	}
 
- fn test_for_5(bv: &Bit_vec) {
-    if bv.is_set(5) == true { println!("Hooray!"); } else { println!("Boo!"); }                             
- }
-`
+	fn test_for_5(bv: &Bit_vec) {
+       if bv.is_set(5) == true { println!("Hooray!"); } else { println!("Boo!"); }                             
+	}
+
+
 Should result in the following output:
 `Hooray!
  Boo!`
