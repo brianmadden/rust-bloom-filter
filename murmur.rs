@@ -10,6 +10,11 @@ pub mod murmur {
     
     use std::iter::range_step;
 
+    /// 32-bit implementation of MurmurHash3
+    /// Params: `key: &str` - a string to hash
+    ///         `seed: u32` - starter value for the hash
+    /// For an unseeded version call `murmur3_32` instead.
+    /// Returns: u32
     pub fn murmur3_32_seeded(key: &str, seed: u32) -> u32 {
         
         let c1 = 0xcc9e2d51;
@@ -66,8 +71,11 @@ pub mod murmur {
 
     }
 
-
-    priv fn key_bytes_to_u32_chunk(bytes: &[u8]) -> u32 {
+    
+    /// Convert a 4 byte chunk, `bytes` to a u32 so that we can
+    /// perform arithmetic operations on it.
+    /// Returns: u32
+    fn key_bytes_to_u32_chunk(bytes: &[u8]) -> u32 {
         
         let chunk: u32 = match bytes.len() {
             
@@ -102,13 +110,32 @@ pub mod murmur {
         
     }
 
+    /// 32-bit implementation of MurmurHash3
+    /// Params: `key: &str` - a string to hash
+    /// Convenience function that simply calls murmur3_32_seeded with a seed 
+    /// of 0.
+    /// Returns: u32
     pub fn murmur3_32(key: &str) -> u32 { murmur3_32_seeded(key, 0) }
 
     
     #[test]
-    fn murmur3_32_hello_test() {
-        let hello_hash = murmur::murmur3_32("hello");
-        assert!(hello_hash == 613153351);
+    fn key_bytes_to_u32_test() {
+        assert!(key_bytes_to_u32_chunk(&[5]) == 5);
+        assert!(key_bytes_to_u32_chunk(&[0, 5]) == 1280);
+        assert!(key_bytes_to_u32_chunk(&[0, 0, 5]) == 327680);
+        assert!(key_bytes_to_u32_chunk(&[0, 0, 0, 5]) == 83886080);
+    }
+    
+    #[test]
+    fn murmur3_32_test() {
+        let mut h = murmur3_32("hello");
+        assert!(h == 613153351);
+        h = murmur3_32("abc");
+        assert!(h == 3017643002);
+        h = murmur3_32("ab");
+        assert!(h == 2613040991);
+        h = murmur3_32("a");
+        assert!(h == 1009084850);
     }
 
 }
