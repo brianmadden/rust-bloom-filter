@@ -26,7 +26,7 @@ pub mod bit_vec {
             Bit_vec { bits: from_elem(size, (0 as u8)), size: size}
         }
 
-        pub fn is_set(&mut self, pos: uint) -> bool { 
+        pub fn is_set(&self, pos: uint) -> bool { 
             if pos > self.size { fail!("Attempted to index beyond bounds of bit vector."); }
             if (1 << (pos % 8)) & self.bits[pos / 8] > 0 { true } else { false }
         }
