@@ -1,6 +1,6 @@
 #[crate_id = "murmur3#0.1"];
 
-mod murmur {
+pub mod murmur {
     
     use std::iter::range_step;
 
