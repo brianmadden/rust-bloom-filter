@@ -1,9 +1,10 @@
 rust-bloom-filter
 =================
 
-Bloom filter library implemented in Rust -- includes Murmur Hash 3 implementation 
+Bloom filter library implemented in Rust -- includes MurmurHash3
+implementation, and simple bit vector library
 
 
-Still very early implementation. Murmur.rs is setup as a stand alone application currently
-for testing and debugging purposes. Proper module and whatnot soon to follow. After murmur
-hash module is cleaned up a bloom filter implementation will be soon to follow.
+Still very early implementation. Currently includes working 32-bit
+murmurhash3 implementation, as well as a working bit vector library
+that can `set`, `unset`, `flip` bits.
