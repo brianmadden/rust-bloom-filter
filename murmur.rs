@@ -1,6 +1,11 @@
 #[crate_id = "murmur3#0.1"];
 #[crate_type = "lib"];
 
+//! murmurhash3 implementation
+//! By: Brian A. Madden - brian.a.madden@gmail.com
+//! Currently only contains a 32-bit implementation
+//! 64-bit implementation soon to follow...
+
 pub mod murmur {
     
     use std::iter::range_step;
@@ -62,11 +67,8 @@ pub mod murmur {
     }
 
 
-    fn key_bytes_to_u32_chunk(bytes: &[u8]) -> u32 {
+    priv fn key_bytes_to_u32_chunk(bytes: &[u8]) -> u32 {
         
-        // TODO: Ensure that we're dealing with LE architecture, 
-        // if not flip the bytes
-
         let chunk: u32 = match bytes.len() {
             
             4 => {
@@ -76,6 +78,9 @@ pub mod murmur {
                  (bytes[0] as u32)) as u32
             },
             
+            // TODO: Ensure that we're dealing with LE architecture, 
+            // if not flip the bytes
+
             3 => { 
                 ((bytes[2] as u32 << 16) + 
                  (bytes[1] as u32 << 8) + 
@@ -99,11 +104,11 @@ pub mod murmur {
 
     pub fn murmur3_32(key: &str) -> u32 { murmur3_32_seeded(key, 0) }
 
-}
+    
+    #[test]
+    fn murmur3_32_hello_test() {
+        let hello_hash = murmur::murmur3_32("hello");
+        assert!(hello_hash == 613153351);
+    }
 
-
-#[test]
-fn murmur3_32_hello_test() {
-    let hello_hash = murmur::murmur3_32("hello");
-    assert!(hello_hash == 613153351);
 }
