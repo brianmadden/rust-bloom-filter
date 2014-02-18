@@ -76,5 +76,6 @@ specified index position is a 1, and false otherwise.
 
 
 Should result in the following output:
-`Hooray!
- Boo!`
+
+	   Hooray!
+	   Boo!
