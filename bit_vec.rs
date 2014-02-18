@@ -1,18 +1,15 @@
 #[crate_id = "bit_vec#0.1"];
+#[crate_type = "lib"];
 
-//#[crate_type = "lib"];
-
-//! A flexible bit vector library
+//! A simple bit vector library
 //! By: Brian A. Madden - brian.a.madden@gmail.com
 
 pub mod bit_vec {
 
     //! Bit vector object. Allows for setting, unsetting, flipping of
     //! bits.  Indexing beyond the bounds of the vector will raise an
-    //! error. `slice` operations that extend beyond the bounds of the
-    //! vector will return the remainder of the bit vector from the
-    //! designated start position.
-
+    //! error.
+    
     use std::vec::from_elem;
     
     pub struct Bit_vec {        
@@ -59,30 +56,7 @@ pub mod bit_vec {
         pub fn get_bytes(~self) -> ~[u8] {
             self.bits
         }
-                
-        /*
-        priv fn convert_index(&self, pos: uint) -> (int, int) {
-            // Convert the index position that the user would like to set
-            // to a byte_index/bit_index pair.
-            
-            // Make sure we're within the bounds of our size declaration
-            if pos > self.size {
-                // fail here
-            }
-
-            // -6             -1
-            // [x][y][z][a][b][c]
-            let mut byte_index = pos / 8;
-            if byte_index < 0 {
-                byte_index = self.bits.len() + byte_index;
-            }
-        
-            let mut bit_index = 8 - (pos % 8);
-
-            (byte_index, bit_index)
-        }
-        */
-        
+                    
     }
 
     #[test]

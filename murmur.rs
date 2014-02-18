@@ -1,4 +1,5 @@
 #[crate_id = "murmur3#0.1"];
+#[crate_type = "lib"];
 
 pub mod murmur {
     
