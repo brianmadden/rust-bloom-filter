@@ -1,4 +1,5 @@
 #[crate_id = "bloom#0.1"];
+#[crate_type = "lib"];
 
 //! A simple bloom filter implementation.
 //! A bloom filter is a compact probabilistic data structure that
