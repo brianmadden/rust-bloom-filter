@@ -24,7 +24,12 @@ The bloom crate exports one module, bloom_filter. The bloom_filter
 module exports a single object, `BloomFilter` with three public methods,
 `new`, `insert`, and `maybe_present`. The `new` method is static and
 can be used to create a new `BloomFilter` with specified expected number
-of insertions, and desired false positive rate. `insert` will insert a string
+of insertions, and desired false positive rate. Example:
+
+	// Create new BloomFilter with 1000 expected elements, and false positive rate of 3%
+	let mut bf = BloomFilter::new(1000, 0.03); 
+
+`insert` will insert a string
 value into the bloom filter, and `maybe_present` will return true if queried
 value might be present, or false if it is *definitely not* present.
 
