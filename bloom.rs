@@ -54,6 +54,11 @@ mod bloom_filter {
             // n = expected_inserts
             // p = fpr
 
+            // Verify that fpr != 0, this will cause errors
+            if fpr <= 0.0 {
+                fail!("False positive rate must be > 0.0!");
+            }
+            
             let m: uint = ceil((-1.0 * (expected_inserts as f64)
                                 * ln(fpr)) / powf(ln(2.0), 2.0)) as uint;
 
@@ -120,5 +125,12 @@ mod bloom_filter {
         assert!(bf.maybe_present(&"abcdefghijklmnop") == false);
         bf.insert("abc");
         assert!(bf.maybe_present(&"abc"));
+    }
+
+    #[test]
+    #[should_fail]
+    
+    fn test_fpr_leq_0() {
+        let bf = BloomFilter::new(2, 0.0);
     }
 }
