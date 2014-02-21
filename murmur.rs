@@ -6,7 +6,7 @@
 //! Currently only contains a 32-bit implementation
 //! 64-bit implementation soon to follow...
 
-pub mod murmur {
+pub mod murmur3 {
     
     use std::iter::range_step;
 

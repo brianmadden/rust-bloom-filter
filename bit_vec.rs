@@ -12,18 +12,18 @@ pub mod bit_vec {
     
     use std::vec::from_elem;
     
-    pub struct Bit_vec {        
+    pub struct BitVec {
         // Just the bits, nothing but the bits...
         bits: ~[u8],
         // Size of the bit array for bounds checking
         size: uint
     }
 
-    impl Bit_vec {
+    impl BitVec {
         
         /// Create a new `bitvec` with `size` bits
-        pub fn new(size: uint) -> Bit_vec { 
-            Bit_vec { bits: from_elem(size, (0 as u8)), size: size}
+        pub fn new(size: uint) -> BitVec { 
+            BitVec { bits: from_elem(size, (0 as u8)), size: size}
         }
 
         pub fn is_set(&self, pos: uint) -> bool { 
@@ -61,13 +61,13 @@ pub mod bit_vec {
 
     #[test]
     fn bit_vec_create_test() {
-        let tester: Bit_vec = Bit_vec::new(8);
+        let tester: BitVec = BitVec::new(8);
         assert!(tester.bits[0] == 0);
     }
 
     #[test]
     fn bit_vec_set_test() {
-        let mut tester: Bit_vec = Bit_vec::new(8);
+        let mut tester: BitVec = BitVec::new(8);
         tester.set(5);
         assert!(tester.bits[0] == 32);
         let res = tester.is_set(5);
@@ -76,7 +76,7 @@ pub mod bit_vec {
 
     #[test]
     fn bit_vec_is_set_test() {
-        let mut tester: Bit_vec = Bit_vec::new(8);
+        let mut tester: BitVec = BitVec::new(8);
         tester.set(5);
         assert!(tester.is_set(5) == true);
         assert!(tester.is_set(6) == false);
@@ -84,7 +84,7 @@ pub mod bit_vec {
     
     #[test]
     fn bit_vec_unset_test() {
-        let mut tester: Bit_vec = Bit_vec::new(8);
+        let mut tester: BitVec = BitVec::new(8);
         tester.set(5);
         assert!(tester.is_set(5) == true);
         tester.unset(5);
@@ -94,7 +94,7 @@ pub mod bit_vec {
 
     #[test]
     fn bit_vec_flip_test() {
-        let mut tester: Bit_vec = Bit_vec::new(8);
+        let mut tester: BitVec = BitVec::new(8);
         tester.flip(5);
         assert!(tester.is_set(5) == true);
         tester.flip(5);
@@ -104,7 +104,7 @@ pub mod bit_vec {
     #[test]
     #[should_fail]
     fn bit_vec_out_of_bounds_test() {
-        let mut tester: Bit_vec = Bit_vec::new(8);
+        let mut tester: BitVec = BitVec::new(8);
         tester.set(15);
     }
     
