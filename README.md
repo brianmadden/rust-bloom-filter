@@ -4,28 +4,30 @@ rust-bloom-filter
 Bloom filter library implemented in Rust -- includes MurmurHash3
 implementation, and simple bit vector library
 
-Currently **does not** actually contain a working bloom filter
-implementation. When I set out to write the library I realized that
-there was a bit of groundwork that needed to be done first.  This
-repository contains the start of that groundwork, and as it evolves
-will eventually contain everything needed for a full-featured bloom
-filter library.
-
-Still very early implementation. Currently includes working 32-bit
-murmurhash3 implementation, as well as a working bit vector library
-that can `set`, `unset`, `flip` bits.
-
+Still early implementation. Currently includes: working bloom filter 
+library, working 32-bit murmurhash3 implementation, as well as a 
+working bit vector library that can `set`, `unset`, `flip` bits.
 
 Building
 ========
 
 Libraries were built and tested using the master branch of Rust on Feb
 18, 2014. Libraries can be compilied by calling `rustc murmur.rs ;
-rustc bit_vec.rs`. Tests can be compiled using the `--test` flag
-during compliation.
+rustc bit_vec.rs ; rustc -L . bloom.rs`. Tests can be compiled using the
+`--test` flag during compliation.
 
 Use
 ===
+bloom
+-----
+The bloom crate exports one module, bloom_filter. The bloom_filter
+module exports a single object, `BloomFilter` with three public methods,
+`new`, `insert`, and `maybe_present`. The `new` method is static and
+can be used to create a new `BloomFilter` with specified expected number
+of insertions, and desired false positive rate. `insert` will insert a string
+value into the bloom filter, and `maybe_present` will return true if queried
+value might be present, or false if it is *definitely not* present.
+
 
 murmur3
 -------
