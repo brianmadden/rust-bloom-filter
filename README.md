@@ -11,10 +11,8 @@ working bit vector library that can `set`, `unset`, `flip` bits.
 Building
 ========
 
-Libraries were built and tested using the master branch of Rust on Feb
-18, 2014. Libraries can be compilied by calling `rustc murmur.rs ;
-rustc bit_vec.rs ; rustc -L . bloom.rs`. Tests can be compiled using the
-`--test` flag during compliation.
+Libraries were built and tested using the master branch of Rust pulled
+on Feb 18, 2014. Libraries can be built using the included Makefile.
 
 Use
 ===
@@ -29,9 +27,9 @@ of insertions, and desired false positive rate. Example:
 	// Create new BloomFilter with 1000 expected elements, and false positive rate of 3%
 	let mut bf = BloomFilter::new(1000, 0.03); 
 
-`insert` will insert a string
-value into the bloom filter, and `maybe_present` will return true if queried
-value might be present, or false if it is *definitely not* present.
+`insert` will insert a string value into the bloom filter, and
+`maybe_present` will return true if queried value might be present, or
+false if it is *definitely not* present.
 
 
 murmur3
