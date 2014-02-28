@@ -8,9 +8,9 @@
 
 use std::vec::from_elem;
 
-//! Bit vector object. Allows for setting, unsetting, flipping of
-//! bits.  Indexing beyond the bounds of the vector will raise an
-//! error.
+/// Bit vector object. Allows for setting, unsetting, flipping of
+/// bits.  Indexing beyond the bounds of the vector will raise an
+/// error.
 
 pub struct BitVec {
     // Just the bits, nothing but the bits...

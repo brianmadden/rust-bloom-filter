@@ -13,8 +13,8 @@ extern mod murmur3;
 
 
 
-use bit_vec::bit_vec::BitVec;
-use murmur3::murmur3::murmur3_32_seeded;
+use bit_vec::BitVec;
+use murmur3::murmur3_32_seeded;
 
 use std::num::ln;
 use std::num::powf;
