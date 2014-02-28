@@ -1,10 +1,10 @@
 #[crate_id = "murmur3#0.1"];
 #[crate_type = "lib"];
 
-//! murmurhash3 implementation
-//! By: Brian A. Madden - brian.a.madden@gmail.com
-//! Currently only contains a 32-bit implementation
-//! 64-bit implementation soon to follow...
+/// murmurhash3 implementation
+/// By: Brian A. Madden - brian.a.madden@gmail.com
+/// Currently only contains a 32-bit implementation
+/// 64-bit implementation soon to follow...
 
 
 

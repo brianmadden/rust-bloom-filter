@@ -7,10 +7,10 @@ TESTFLAG = --test
 
 all: bloom-filter
 
-bloom-filter: murmur3 bit-vec
+bloom-filter: murmur bit-vec
 	$(CC) $(CFLAGS) bloom.rs
 
-murmur3:
+murmur:
 	$(CC) murmur.rs
 
 bit-vec:
@@ -27,4 +27,4 @@ bit-vec-test:
 
 
 clean:
-	rm -rf *rlib *so
+	rm -rf *rlib

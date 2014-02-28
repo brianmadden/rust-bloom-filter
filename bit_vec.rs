@@ -1,16 +1,16 @@
 #[crate_id = "bit_vec#0.1"];
 #[crate_type = "lib"];
 
-//! A simple bit vector library
-//! By: Brian A. Madden - brian.a.madden@gmail.com
+/// A simple bit vector library
+/// By: Brian A. Madden - brian.a.madden@gmail.com
 
 
 
 use std::vec::from_elem;
 
-//! Bit vector object. Allows for setting, unsetting, flipping of
-//! bits.  Indexing beyond the bounds of the vector will raise an
-//! error.
+/// Bit vector object. Allows for setting, unsetting, flipping of
+/// bits.  Indexing beyond the bounds of the vector will raise an
+/// error.
 
 pub struct BitVec {
     // Just the bits, nothing but the bits...
