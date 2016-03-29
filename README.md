@@ -1,11 +1,17 @@
+## DEPRECATED
+
+### Please note, this project is deprecated and no longer being maintained, please use an up-to-date version at [jonalmeida/bloom-filter](https://github.com/jonalmeida/bloom-filter).
+
+---
+
 rust-bloom-filter
 =================
 
 Bloom filter library implemented in Rust -- includes MurmurHash3
 implementation, and simple bit vector library
 
-Still early implementation. Currently includes: working bloom filter 
-library, working 32-bit murmurhash3 implementation, as well as a 
+Still early implementation. Currently includes: working bloom filter
+library, working 32-bit murmurhash3 implementation, as well as a
 working bit vector library that can `set`, `unset`, `flip` bits.
 
 Building
@@ -25,7 +31,7 @@ can be used to create a new `BloomFilter` with specified expected number
 of insertions, and desired false positive rate. Example:
 
 	// Create new BloomFilter with 1000 expected elements, and false positive rate of 3%
-	let mut bf = BloomFilter::new(1000, 0.03); 
+	let mut bf = BloomFilter::new(1000, 0.03);
 
 `insert` will insert a string value into the bloom filter, and
 `maybe_present` will return true if queried value might be present, or
@@ -72,11 +78,11 @@ specified index position is a 1, and false otherwise.
        test_for_5(&bv);
        bv.unset(5);
        test_for_5(&bv);
-    
+
 	}
 
 	fn test_for_5(bv: &Bit_vec) {
-       if bv.is_set(5) == true { println!("Hooray!"); } else { println!("Boo!"); }                             
+       if bv.is_set(5) == true { println!("Hooray!"); } else { println!("Boo!"); }
 	}
 
 
